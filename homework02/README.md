@@ -17,7 +17,9 @@ We calculate 5 example meteorite landing sites in Syrtis Major, Mars, and measur
   - meteorite sample time is as follows: stony meteorites take `1 hour` to sample, iron meteorites take `2 hours` to sample, and stony-iron meteorites take `3 hours` to sample.
 
 This can be run via the following terminal commands:
+
 Linux	: `python3 sites.py; python3 visit.py`
+
 Windows	: `python sites.py; python visit.py`
 
 Please note this program only supports Python3, so the Windows command depends on your installation and aliases.

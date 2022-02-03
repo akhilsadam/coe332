@@ -12,7 +12,9 @@ strRanges = [
     ]
 
 try: rng = np.random.default_rng()
-except: rng = np.random
+except: 
+    rng = np.random
+    rng.integers = rng.randint
 ###
 
 n_labels = len(labels)-1

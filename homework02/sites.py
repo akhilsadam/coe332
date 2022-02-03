@@ -11,7 +11,8 @@ strRanges = [
     np.array(["stony","iron","stony-iron"])
     ]
 
-rng = np.random.default_rng()
+try: rng = np.random.default_rng()
+except: rng = np.random
 ###
 
 n_labels = len(labels)-1

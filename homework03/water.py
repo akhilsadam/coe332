@@ -18,7 +18,7 @@ def read(url:str)->dict:
         dict: stored data in JSON file.
     """
     if not os.path.exists(datafile):
-        os.system("wget -o"+sep+datafile+sep+url)
+        os.system("wget"+sep+datafile+sep+url)
     
     with open(datafile,'r') as file:
         data = js.load(file)

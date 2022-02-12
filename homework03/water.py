@@ -5,7 +5,7 @@ import os
 import json as js
 import numpy as np
 
-datafile="data.json"
+datafile="turbidity_data.json"
 sep=" "
 
 def read(url:str)->dict:

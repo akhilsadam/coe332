@@ -25,12 +25,24 @@ The input data has the following format:
  ... etc
 ```
 
-- .gitignore	: ignores any downloaded .json files
-- water.py	: 
-  - n
-
-- visit.py	: 
-
+- .gitignore: ignores any downloaded .json files
+- water.py	: calculate and print current water status and minimum required treatment time using a moving average window of 5 samples.
+ - We calculate turbidity via the following equation  
+ ```
+ T = a0 * I90
+ T = Turbidity in NTU Units (0 – 40)
+ a0 = Calibration constant
+ I90 = Ninety degree detector current
+ ```
+ - We calculate minimum required time for safe water via the following inequality
+ ```
+ Ts > T0(1-d)**b
+ Ts = Turbidity threshold for safe water
+ T0 = Current turbidity
+ d = decay factor per hour, expressed as a decimal
+ b = hours elapsed
+ ```
+- test_water.py	: tests the water program functions.
 
 ## Run (via terminal):
 
@@ -48,6 +60,12 @@ Average turbidity based on most recent five measurements = 1.1544952000000002 NT
 WARNING:root:Turbidity is above threshold for safe use
 Minimum time required to return below a safe threshold = 7.111086148101843 hours
 ```
+- If you have safe water, the program may output a message like the below:  
+```
+Average turbidity based on most recent five measurements = 0.9852 NTU
+Info: Turbidity is below threshold for safe use
+Minimum time required to return below a safe threshold = 0 hours
+```
 
 TESTER:  
 ```
@@ -61,5 +79,6 @@ CRITICAL:root:Nonphysical Decay Constant...
 Exit
 <function tests.test_turbid at 0x7f9d796690d0>
 ```
+- Any tester output without an `AssertionError` is valid.
 
 Please note this program only supports Python3, so the Windows command depends on your installation and aliases.

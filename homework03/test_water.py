@@ -20,7 +20,7 @@ def run():
     "Run all tests."
     for test in dir(tests):
         item = getattr(tests,test)
-        if callable(item):
+        if callable(item) and test.startswith('test'):
             print(item)
             item()
 

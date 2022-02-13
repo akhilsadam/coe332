@@ -3,12 +3,21 @@
 
 import os
 import json as js
+import logging as log
+from typing import List
 import numpy as np
 
 name = "turbidity_data"
 ext = ".json"
 datafile=name+ext
 sep=" "
+
+cc = "calibration_constant"
+dc = "detector_current"
+
+THRESHOLD = 1
+
+logger = log.getLogger(__name__)
 
 def read(url:str)->dict:
     """Get JSON data from url.
@@ -27,7 +36,7 @@ def read(url:str)->dict:
     
     return data
 
-def turbidity(a0:float,I90:float)->float:
+def turbid(a0:float,I90:float)->float:
     """Calculates turbidity.
 
     Args:
@@ -39,7 +48,7 @@ def turbidity(a0:float,I90:float)->float:
     """
     return a0*I90
 
-def time(T:float,Ts:float,d:float)->float:
+def time(T:float,Ts:float,d:float=0.02)->float:
     """Calculates time to safe water.
 
     Args:
@@ -50,11 +59,49 @@ def time(T:float,Ts:float,d:float)->float:
     Returns:
         float: time to safe water.
     """
-    return np.log(Ts/T) / np.log(1-d)
+    if d>=1:
+        log.critical("Nonphysical Decay Constant...\nExit")
+        return -1
+    t = np.log(Ts/T) / np.log(1-d)
+    return max(t,0.0)
+
+def sort(d:dict,k:str)->list:
+    """Sorts dictionary by key.
+
+    Args:
+        d (dict): dictionary to sort.
+        k (str): key to sort with.
+
+    Returns:
+        list: sorted items of dict.
+    """
+    return sorted(d, key=lambda p: p[k], reverse=True)
+
+def current(d:List[dict],n:int=5)->float:
+    """Calculates most-recent turbidity average.
+
+    Args:
+        d (List[dict]): turbidity data.
+        n (int): moving-average block size.
+    Returns:
+        float: most-recent turbidity average.
+    """
+    value = 0.0
+    for e in d[:n]:
+        value += turbid(e[cc],e[dc])
+    return value/n
 
 def core():
-    data = sorted(read("https://raw.githubusercontent.com/wjallen/turbidity/main/turbidity_data.json")[name], key=lambda p: p["datetime"], reverse=True)
-    print(data)
+    data = sort(read("https://raw.githubusercontent.com/wjallen/turbidity/main/turbidity_data.json")[name],"datetime")
+    turbidity = current(data)
+    print("Average turbidity based on most recent five measurements = {} NTU".format(turbidity))
+
+    if turbidity > THRESHOLD :
+        log.warning("Turbidity is above threshold for safe use")
+    else:
+        log.info("Turbidity is below threshold for safe use")
+
+    print("Minimum time required to return below a safe threshold = {} hours".format(time(turbidity,THRESHOLD)))
 
 if __name__ == '__main__':
     core()

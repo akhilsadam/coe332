@@ -26,7 +26,8 @@ The input data has the following format:
 ```
 
 - .gitignore: ignores any downloaded .json files
-## water.py	: calculate and print current water status and minimum required treatment time using a moving average window of 5 samples.
+#### water.py
+- calculate and print current water status and minimum required treatment time using a moving average window of 5 samples.
 -  We calculate turbidity via the following equation    
  ```
  T = a0 * I90
@@ -42,7 +43,8 @@ The input data has the following format:
  d = decay factor per hour, expressed as a decimal
  b = hours elapsed
  ```
-- test_water.py	: tests the water program functions.
+#### test_water.py
+- tests the water program functions.
 
 ## Run (via terminal):
 

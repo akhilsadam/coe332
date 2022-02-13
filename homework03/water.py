@@ -36,7 +36,7 @@ def read(url:str)->dict:
     
     return data
 
-def turbid(a0:float,I90:float)->float:
+def turbid(a0:float,I90:float) -> float:
     """Calculates turbidity.
 
     Args:
@@ -46,8 +46,7 @@ def turbid(a0:float,I90:float)->float:
     Returns:
         float: turbidity in NTU units
     """
-    out = a0*I90
-    return out if out > 0 else -1
+    return a0*I90
 
 def time(T:float,Ts:float=THRESHOLD,d:float=0.02)->np.float64:
     """Calculates time to safe water.

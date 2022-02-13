@@ -81,6 +81,12 @@ class tests:
             {water.cc:5,water.dc:6},
         ],1) == 30
        
+    def test_read():
+        assert type(water.read("https://raw.githubusercontent.com/wjallen/turbidity/main/turbidity_data.json"))==dict
+        assert type(water.read("https://raw.githubusercontent.com/wjallen/turbidity/main/turbidity_data.json")[water.name])==list
+        assert type(water.read("---"))==dict #since we now have the data downloaded
+        assert water.read("https://raw.githubusercontent.com/wjallen/turbidity/main/turbidity_data.json")[water.name][0][water.cc] == 1.022
+        assert water.read("https://raw.githubusercontent.com/wjallen/turbidity/main/turbidity_data.json")[water.name][5][water.dc] == 1.104
         
 
 def run():

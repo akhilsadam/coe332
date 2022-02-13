@@ -50,7 +50,7 @@ class tests:
     def test_current():
         assert type(water.current([
             {water.cc:5,water.dc:6},
-        ])) == np.float64
+        ])) == float
         assert water.current([
             {water.cc:5,water.dc:6},
         ]) == 30

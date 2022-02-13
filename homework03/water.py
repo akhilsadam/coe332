@@ -90,7 +90,7 @@ def current(d:List[dict],n:int=5)->float:
     value = 0.0
     for e in d[:n]:
         value += turbid(e[cc],e[dc])
-    return value/n
+    return value/len(d[:n])
 
 def core():
     data = sort(read("https://raw.githubusercontent.com/wjallen/turbidity/main/turbidity_data.json")[name],"datetime")

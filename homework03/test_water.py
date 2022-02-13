@@ -16,6 +16,17 @@ class tests:
         assert water.time(1,1,2.0) == -1
         assert water.time(-1) == -1
 
+    def test_sort():
+        assert water.sort([
+            {"a":5,"b":6},
+            {"a":4,"b":8},
+            {"a":5,"b":7}
+        ],"b") == [
+            {"a":4,"b":8},
+            {"a":5,"b":7},
+            {"a":5,"b":6}
+        ]
+
 def run():
     "Run all tests."
     for test in dir(tests):

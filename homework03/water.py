@@ -66,11 +66,11 @@ def time(T:float,Ts:float=THRESHOLD,d:float=0.02)->np.float64:
     t = np.log(Ts/T) / np.log(1-d)
     return max(t,0.0)
 
-def sort(d:dict,k:str)->list:
-    """Sorts dictionary by key.
+def sort(d:List[dict],k:str)->list:
+    """Sorts list of dictionaries by key.
 
     Args:
-        d (dict): dictionary to sort.
+        d (List[dict]): list of dictionaries to sort.
         k (str): key to sort with.
 
     Returns:

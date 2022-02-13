@@ -55,7 +55,7 @@ Otherwise, the program will autodownload the file.
 
 ## Example Output
 
-water.py:  
+#### water.py:  
 ```
 Average turbidity based on most recent five measurements = 1.1544952000000002 NTU
 WARNING:root:Turbidity is above threshold for safe use
@@ -68,7 +68,7 @@ Info: Turbidity is below threshold for safe use
 Minimum time required to return below a safe threshold = 0 hours
 ```
 
-TESTER:  
+#### tester:  
 ```
 <function tests.test_current at 0x7f9d79669268>
 <function tests.test_read at 0x7f9d796692f0>

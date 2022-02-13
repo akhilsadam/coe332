@@ -17,6 +17,21 @@ class tests:
         assert water.time(-1) == -1
 
     def test_sort():
+        assert water.sort([],"b") == []
+        assert water.sort([
+            {"a":5},
+            {"a":4},
+            {"a":5}
+        ],"b") == [
+            {"a":5},
+            {"a":4},
+            {"a":5}
+        ]
+        assert water.sort([
+            {"a":4,"b":8},
+        ],"b") == [
+            {"a":4,"b":8},
+        ]
         assert water.sort([
             {"a":5,"b":6},
             {"a":4,"b":8},

@@ -54,6 +54,7 @@ def time(T:float,Ts:float,d:float)->float:
 
 def core():
     data = sorted(read("https://raw.githubusercontent.com/wjallen/turbidity/main/turbidity_data.json")[name], key=lambda p: p["datetime"], reverse=True)
+    print(data)
 
 if __name__ == '__main__':
     core()

@@ -52,7 +52,7 @@ Linux	: `python3 water.py` and/or `python3 test_water.py`
 Windows	: `py water.py` and/or `py test_water.py`
 
 - If you do not have `wget` on your system, the JSON file linked above must be downloaded to `turbidity_data.json` in the same directory. (use `Right-Click` and `Save As`).  
-Otherwise, the program will autodownload the file.  
+Otherwise, the program will autodownload the file using `wget`.  
 
 ## Example Output
 

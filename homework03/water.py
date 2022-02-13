@@ -102,6 +102,7 @@ def core():
         log.info("Turbidity is below threshold for safe use")
 
     print("Minimum time required to return below a safe threshold = {} hours".format(time(turbidity)))
+    # note I did not add a format specifier since I rather like the extra digits (no need for significant figures here)!
 
 if __name__ == '__main__':
     core()

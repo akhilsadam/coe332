@@ -27,14 +27,14 @@ The input data has the following format:
 
 - .gitignore: ignores any downloaded .json files
 - water.py	: calculate and print current water status and minimum required treatment time using a moving average window of 5 samples.
- - We calculate turbidity via the following equation  
+ - We calculate turbidity via the following equation    
  ```
  T = a0 * I90
  T = Turbidity in NTU Units (0 – 40)
  a0 = Calibration constant
  I90 = Ninety degree detector current
  ```
- - We calculate minimum required time for safe water via the following inequality
+ - We calculate minimum required time for safe water via the following inequality  
  ```
  Ts > T0(1-d)**b
  Ts = Turbidity threshold for safe water
@@ -46,10 +46,10 @@ The input data has the following format:
 
 ## Run (via terminal):
 
-Linux	: `python3 water.py` and/or `python3 test_water.py`
+Linux	: `python3 water.py` and/or `python3 test_water.py`  
 Windows	: `py water.py` and/or `py test_water.py`
 
-- If you do not have `wget` on your system, the JSON file linked above must be downloaded to `turbidity_data.json` in the same directory.
+- If you do not have `wget` on your system, the JSON file linked above must be downloaded to `turbidity_data.json` in the same directory. (`Right-Click` and `Save As`).  
 Otherwise, the program will autodownload the file.  
 
 ## Example Output

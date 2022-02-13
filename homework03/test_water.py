@@ -21,6 +21,7 @@ def run():
     for test in dir(tests):
         item = getattr(tests,test)
         if callable(item):
+            print(item)
             item()
 
 if __name__ == '__main__':

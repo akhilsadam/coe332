@@ -1,3 +1,4 @@
+from typing import List
 import water   
 import numpy as np
 class tests:
@@ -41,6 +42,11 @@ class tests:
             {"a":5,"b":7},
             {"a":5,"b":6}
         ]
+        assert type(water.sort([
+            {"a":5,"b":6},
+            {"a":4,"b":8},
+            {"a":5,"b":7}
+        ],"b")) == List[dict]
 
 def run():
     "Run all tests."

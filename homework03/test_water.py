@@ -42,6 +42,11 @@ class tests:
             {"a":5,"b":7},
             {"a":5,"b":6}
         ]
+        print(type(water.sort([
+            {"a":5,"b":6},
+            {"a":4,"b":8},
+            {"a":5,"b":7}
+        ],"b")))
         assert type(water.sort([
             {"a":5,"b":6},
             {"a":4,"b":8},

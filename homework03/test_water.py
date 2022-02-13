@@ -47,6 +47,42 @@ class tests:
             {"a":5,"b":6}
         ]
 
+    def test_current():
+        assert type(water.current([
+            {water.cc:5,water.dc:6},
+        ])) == np.float64
+        assert water.current([
+            {water.cc:5,water.dc:6},
+        ]) == 30
+        assert water.current([
+            {water.cc:5,water.dc:6},
+            {water.cc:5,water.dc:0},
+            {water.cc:4,water.dc:6},
+            {water.cc:5,water.dc:0},
+            {water.cc:5,water.dc:6},
+        ]) == 84/5
+        assert water.current([
+            {water.cc:5,water.dc:6},
+            {water.cc:5,water.dc:0},
+            {water.cc:4,water.dc:6},
+            {water.cc:5,water.dc:0},
+            {water.cc:5,water.dc:6},
+            {water.cc:5,water.dc:6},
+            {water.cc:5,water.dc:6},
+            {water.cc:5,water.dc:6},
+            {water.cc:5,water.dc:6},
+            {water.cc:5,water.dc:6},
+        ]) == 84/5
+        assert water.current([
+            {water.cc:5,water.dc:6},
+            {water.cc:5,water.dc:0},
+            {water.cc:4,water.dc:6},
+            {water.cc:5,water.dc:0},
+            {water.cc:5,water.dc:6},
+        ],1) == 30
+       
+        
+
 def run():
     "Run all tests."
     for test in dir(tests):

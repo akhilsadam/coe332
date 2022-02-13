@@ -34,7 +34,7 @@ The input data has the following format:
  a0 = Calibration constant
  I90 = Ninety degree detector current
  ```
-  -  We calculate minimum required time for safe water via the following inequality  
+  -  We calculate minimum required time for safe water via the following inequality    
  ```
  Ts > T0(1-d)**b
  Ts = Turbidity threshold for safe water

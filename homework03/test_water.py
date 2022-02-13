@@ -1,5 +1,5 @@
 import water   
-
+import numpy as np
 class tests:
 
     def test_turbid():
@@ -11,8 +11,7 @@ class tests:
 
     def test_time():
         assert water.time(1,1) == 0.0
-        print(type(water.time(1,Ts=0.5)))
-        assert type(water.time(1,Ts=0.5)) == float
+        assert type(water.time(1,0.5)) == np.float64
         assert abs(water.time(40) - 182.5) < 0.5
         assert water.time(1,1,2.0) == -1
         assert water.time(-1) == -1

@@ -49,7 +49,7 @@ def turbid(a0:float,I90:float)->float:
     out = a0*I90
     return out if out > 0 else -1
 
-def time(T:float,Ts:float=THRESHOLD,d:float=0.02)->float:
+def time(T:float,Ts:float=THRESHOLD,d:float=0.02)->np.float64:
     """Calculates time to safe water.
 
     Args:

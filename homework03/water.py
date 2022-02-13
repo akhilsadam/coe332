@@ -53,7 +53,7 @@ def time(T:float,Ts:float,d:float)->float:
     return np.log(Ts/T) / np.log(1-d)
 
 def core():
-    data = sorted(read("https://raw.githubusercontent.com/wjallen/turbidity/main/turbidity_data.json")[name].items(), key=lambda p: p["datetime"], reverse=True)
+    data = sorted(read("https://raw.githubusercontent.com/wjallen/turbidity/main/turbidity_data.json")[name], key=lambda p: p["datetime"], reverse=True)
 
 if __name__ == '__main__':
     core()

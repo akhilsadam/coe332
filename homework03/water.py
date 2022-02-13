@@ -46,9 +46,10 @@ def turbid(a0:float,I90:float)->float:
     Returns:
         float: turbidity in NTU units
     """
-    return a0*I90
+    out = a0*I90
+    return out if out > 0 else -1
 
-def time(T:float,Ts:float,d:float=0.02)->float:
+def time(T:float,Ts:float=THRESHOLD,d:float=0.02)->float:
     """Calculates time to safe water.
 
     Args:
@@ -59,7 +60,7 @@ def time(T:float,Ts:float,d:float=0.02)->float:
     Returns:
         float: time to safe water.
     """
-    if d>=1:
+    if d>=1 or T < 0:
         log.critical("Nonphysical Decay Constant...\nExit")
         return -1
     t = np.log(Ts/T) / np.log(1-d)
@@ -101,7 +102,7 @@ def core():
     else:
         log.info("Turbidity is below threshold for safe use")
 
-    print("Minimum time required to return below a safe threshold = {} hours".format(time(turbidity,THRESHOLD)))
+    print("Minimum time required to return below a safe threshold = {} hours".format(time(turbidity)))
 
 if __name__ == '__main__':
     core()

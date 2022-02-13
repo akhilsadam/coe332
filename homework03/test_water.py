@@ -6,8 +6,8 @@ class tests:
         assert water.turbid(3,4) == 12
         assert water.turbid(3,0) == -1
         assert type(water.turbid(3,4)) == int
-        assert type(water.turbid(3.1,0)) == float
-        assert water.turbid(-3,4) == -1
+        assert type(water.turbid(3.1,0)) == int
+        assert water.turbid(3.1,4) == 12.4
 
     def test_time():
         assert water.time(1,1) == 0.0

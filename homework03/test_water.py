@@ -10,7 +10,7 @@ def test_turbid():
     assert type(water.turbid(3,4)) == int
     assert type(water.turbid(3.1,0)) == float
     assert water.turbid(3.1,4) == 12.4
-    with pytest.raises(TypeError):
+    with pytest.raises(ValueError):
         assert water.turbid(3,"somehow")
 
 def test_time():

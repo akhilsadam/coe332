@@ -46,10 +46,13 @@ The input data has the following format:
 #### test_water.py
 - tests the water program functions.
 
+## Install:
+Make sure to install pytest: `pip3 install --user pytest`.
+
 ## Run (via terminal):
 
-Linux	: `python3 water.py` and/or `python3 test_water.py`  
-Windows	: `py water.py` and/or `py test_water.py`
+Linux	: `python3 water.py` and/or `pytest`  
+Windows	: `py water.py` and/or `pytest`
 
 - If you do not have `wget` on your system, the JSON file linked above must be downloaded to `turbidity_data.json` in the same directory (use `Right-Click` and `Save As`).  
 Otherwise, the program will autodownload the file using `wget`.  
@@ -70,17 +73,6 @@ Minimum time required to return below a safe threshold = 0 hours
 ```
 
 #### tester:  
-```
-<function tests.test_current at 0x7f9d79669268>
-<function tests.test_read at 0x7f9d796692f0>
-<function tests.test_sort at 0x7f9d796691e0>
-<function tests.test_time at 0x7f9d79669158>
-CRITICAL:root:Nonphysical Decay Constant...
-Exit
-CRITICAL:root:Nonphysical Decay Constant...
-Exit
-<function tests.test_turbid at 0x7f9d796690d0>
-```
 - Any tester output without an `AssertionError` is valid.
 
 Please note this program only supports Python3, so the Windows command depends on your installation and aliases.

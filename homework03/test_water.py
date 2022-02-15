@@ -18,9 +18,9 @@ def test_time():
     assert water.time(1,1,2.0) == -1
     assert water.time(-1) == -1
     with pytest.raises(TypeError):
-        assert water.time(np.abs,3)
+        water.time(np.abs,3)
     with pytest.raises(TypeError):
-        assert water.time(3,'a')
+        water.time(3,'a')
 
 def test_sort():
     assert type(water.sort([
@@ -53,9 +53,9 @@ def test_sort():
         {"a":5,"b":6}
     ]
     with pytest.raises(TypeError):
-        assert water.sort(3)
+        water.sort(3)
     with pytest.raises(TypeError):
-        assert water.sort([
+        water.sort([
         {"a":5,"b":6},
         {"a":4,"b":8},
         {"a":5,"b":7}

@@ -54,16 +54,6 @@ def test_sort():
     ]
     with pytest.raises(TypeError):
         water.sort(3)
-    with pytest.raises(TypeError):
-        water.sort([
-        {"a":5,"b":6},
-        {"a":4,"b":8},
-        {"a":5,"b":7}
-    ],"b") == [
-        {"a":4,"b":8},
-        {"a":5,"b":7},
-        {"a":5,"b":'s'}
-    ]
 
 def test_current():
     assert type(water.current([

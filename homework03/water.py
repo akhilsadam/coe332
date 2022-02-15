@@ -46,8 +46,6 @@ def turbid(a0:float,I90:float) -> float:
     Returns:
         float: turbidity in NTU units
     """
-    if type(a0) != float or type(I90) != float:
-        raise(TypeError)
     return a0*I90
 
 def time(T:float,Ts:float=THRESHOLD,d:float=0.02)->np.float64:

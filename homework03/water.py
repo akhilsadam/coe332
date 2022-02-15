@@ -75,7 +75,7 @@ def sort(d:List[dict],k:str)->list:
     Returns:
         list: sorted items of dict.
     """
-    if type(d) != List[dict]:
+    if type(d) != list:
         raise(TypeError)
     return sorted(d, key=lambda p: p[k], reverse=True)
 

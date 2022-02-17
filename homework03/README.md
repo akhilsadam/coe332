@@ -56,7 +56,7 @@ Windows	: `py water.py` and/or `pytest`
 
 - If you do not have `wget` on your system, the JSON file linked above must be downloaded to `turbidity_data.json` in the same directory (use `Right-Click` and `Save As`).  
 Otherwise, the program will autodownload the file using `wget`.  
-
+- Note we assume `turbidity_data.json` is a static file for some of the tests (the file needs to be unchanged so the values can be checked).
 ## Example Output
 
 #### water.py:  

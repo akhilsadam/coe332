@@ -19,7 +19,7 @@ THRESHOLD = 1
 
 logger = log.getLogger(__name__)
 
-def read(url:str)->dict:
+def read(url:str) -> dict:
     """Get JSON data from url.
 
     Args:
@@ -28,12 +28,15 @@ def read(url:str)->dict:
     Returns:
         dict: stored data in JSON file.
     """
+    if type(url) != str:
+        raise(TypeError)
+
     if not os.path.exists(datafile):
-        os.system("wget"+sep+datafile+sep+url)
-    
+        os.system(f'wget{sep}{datafile}{sep}{url}')
+
     with open(datafile,'r') as file:
         data = js.load(file)
-    
+
     return data
 
 def turbid(a0:float,I90:float) -> float:
@@ -88,6 +91,8 @@ def current(d:List[dict],n:int=5)->float:
     Returns:
         float: most-recent turbidity average.
     """
+    if type(d) != list or type(n) != int:
+        raise(TypeError)
     value = 0.0
     for e in d[:n]:
         value += turbid(e[cc],e[dc])

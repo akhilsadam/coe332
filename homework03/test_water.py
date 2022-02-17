@@ -10,6 +10,7 @@ def test_turbid():
     assert type(water.turbid(3,4)) == int
     assert type(water.turbid(3.1,0)) == float
     assert water.turbid(3.1,4) == 12.4
+# Note no exceptions necessary for this function as it has been designed quite simply.
 
 def test_time():
     assert water.time(1,1) == 0.0
@@ -88,6 +89,16 @@ def test_current():
         {water.cc:5,water.dc:0},
         {water.cc:5,water.dc:6},
     ],1) == 30
+    with pytest.raises(TypeError):
+        water.current([
+        {water.cc:5,water.dc:6},
+        {water.cc:5,water.dc:0},
+        {water.cc:4,water.dc:6},
+        {water.cc:5,water.dc:0},
+        {water.cc:5,water.dc:6},
+        ],1.45)
+    with pytest.raises(TypeError):
+        water.current("Really?",1)
     
 def test_read():
     assert type(water.read("https://raw.githubusercontent.com/wjallen/turbidity/main/turbidity_data.json"))==dict
@@ -95,6 +106,8 @@ def test_read():
     assert type(water.read("---"))==dict #since we now have the data downloaded
     assert water.read("https://raw.githubusercontent.com/wjallen/turbidity/main/turbidity_data.json")[water.name][0][water.cc] == 1.022
     assert water.read("https://raw.githubusercontent.com/wjallen/turbidity/main/turbidity_data.json")[water.name][5][water.dc] == 1.104
+    with pytest.raises(TypeError):
+        water.read(3)
     
 
 # def run():

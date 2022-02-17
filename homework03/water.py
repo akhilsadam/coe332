@@ -17,6 +17,7 @@ dc = "detector_current"
 
 THRESHOLD = 1
 
+log.basicConfig(level=log.INFO)
 logger = log.getLogger(__name__)
 logger.setLevel(log.INFO)
 

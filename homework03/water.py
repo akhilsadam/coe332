@@ -18,6 +18,7 @@ dc = "detector_current"
 THRESHOLD = 1
 
 logger = log.getLogger(__name__)
+logger.setLevel(log.INFO)
 
 def read(url:str) -> dict:
     """Get JSON data from url.

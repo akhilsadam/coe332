@@ -28,7 +28,7 @@ This is a Docker containerization test program, where we containerize the follow
 
 <details open>
 <summary>From Source</summary>
-
+- Please note that source builds only support Python3 on Ubuntu 20.04, so your mileage may vary for other systems.
 
 
 </details>
@@ -40,4 +40,3 @@ Linux	: `python3 sites.py; python3 visit.py`
 
 Windows	: `python sites.py; python visit.py`
 
-Please note that source builds only support Python3 on Ubuntu, so ymmv for other systems.

@@ -14,8 +14,37 @@ This is a Docker containerization test program, where we containerize the follow
 - Makefile          : a makefile to automate the clean / build / run / push commands for the docker container
 
 ## Input Data
-- The input datafile should be of similar form to the example datafile `data/data.json` provided (below for reference).\
-![](/homework04/data/data.json)
+- The input datafile should be of similar form to the example datafile `data/data.json` provided.
+
+<details open>
+<summary>Example</summary>
+
+```
+{
+ "meteorite_landings": [
+   {
+     "name": "Ruiz",
+     "id": "10001",
+     "recclass": "L5",
+     "mass (g)": "21",
+     "reclat": "50.775",
+     "reclong": "6.08333",
+     "GeoLocation": "(50.775, 6.08333)"
+   },
+   {
+     "name": "Beeler",
+     "id": "10002",
+     "recclass": "H6",
+     "mass (g)": "720",
+     "reclat": "56.18333",
+     "reclong": "10.23333",
+     "GeoLocation": "(56.18333, 10.23333)"
+   },
+  ]
+}
+```
+
+</details>
 
 ## Installation & Usage
 
@@ -28,8 +57,27 @@ This is a Docker containerization test program, where we containerize the follow
 
 <details open>
 <summary>From Source</summary>
-- Please note that source builds only support Python3 on Ubuntu 20.04, so your mileage may vary for other systems.
 
+- Please note that source builds only support Python3 on Ubuntu 20.04, and are written in that fashion. Your mileage may vary for other systems.
+### Install
+- First, install all dependencies:
+```
+apt-get install zlib1g python3 python3-pip -y
+pip3 install numpy pytest matplotlib
+```
+- Then clone this repository and initialize script:
+```
+git clone https://github.com/akhilsadam/coe332.git 
+cd coe332/homework04/
+chmod +rx /code/land.py
+```
+### Run
+- Tester
+```
+cd code
+pytest
+```
+ - Any tester output without an `AssertionError` is valid.
 
 </details>
 

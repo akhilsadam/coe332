@@ -15,7 +15,7 @@ This is a Docker containerization test program, where we containerize the follow
 
 ## Input Data
 - The input datafile should be of similar form to the example datafile `data/data.json` provided (below for reference).\
-![](data/data.json)
+![](/homework04/data/data.json)
 
 ## Installation & Usage
 

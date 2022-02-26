@@ -54,10 +54,10 @@ This is a Docker containerization test program, where we containerize the follow
 ### Install
 - Note `docker run` will also pull the necessary image.
 - Install Docker:
- - - `apt-get install docker` (if you are on an Ubuntu machine)
+  - `apt-get install docker` (if you are on an Ubuntu machine)
 ### Run 
 - (with data `<pathtodatafile.json>`) (use a path to the file `data/data.json` to see example output)
- - - `docker run --rm -v \${PWD}:/data ${NAME}/ml_data_analysis:hw04 land.py <pathtodatafile.json>`
+  - `docker run --rm -v \${PWD}:/data ${NAME}/ml_data_analysis:hw04 land.py <pathtodatafile.json>`
 
 </details>
 
@@ -79,7 +79,7 @@ chmod +rx code/land.py
 ```
 ### Run
 - Tester
- - Any tester output without an `AssertionError` is valid.
+  - Any tester output without an `AssertionError` is valid.
 ```
 pytest
 ```

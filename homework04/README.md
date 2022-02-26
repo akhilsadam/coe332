@@ -51,7 +51,11 @@ This is a Docker containerization test program, where we containerize the follow
 <details open>
 <summary>Docker Container</summary>
 
-
+### Install
+- blank, as `docker run` will also pull the necessary image.
+### Run 
+- (with data `<pathtodatafile.json>`) (use a path to the file `data/data.json` to see example output)
+`docker run --rm -v \${PWD}:/data ${NAME}/ml_data_analysis:hw04 land.py <pathtodatafile.json>`
 
 </details>
 
@@ -77,11 +81,7 @@ chmod +rx code/land.py
 pytest
 ```
  - Any tester output without an `AssertionError` is valid.
-- Example Run
-```
-code/land.py data/data.json
-```
-- Run (with data `<pathtodatafile.json>`)
+- Run (with data `<pathtodatafile.json>`) (use `data/data.json` to see example output)
 ```
 code/land.py <pathtodatafile.json>
 ```

@@ -48,7 +48,7 @@ This is a Docker containerization test program, where we containerize the follow
 
 ## Installation & Usage
 
-<details open>
+<details>
 <summary>Docker Container</summary>
 
 ### Install
@@ -59,7 +59,7 @@ This is a Docker containerization test program, where we containerize the follow
 
 </details>
 
-<details open>
+<details>
 <summary>From Source</summary>
 
 - Please note that source builds only support Python3 on Ubuntu 20.04, and are written in that fashion. Your mileage may vary for other systems.

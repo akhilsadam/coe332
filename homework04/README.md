@@ -17,7 +17,7 @@ This is a Docker containerization test program, where we containerize the follow
 - The input datafile should be of similar form to the example datafile `data/data.json` provided.
 
 <details open>
-<summary>Example</summary>
+<summary>data.json (HEAD)</summary>
 
 ```
 {
@@ -69,22 +69,58 @@ pip3 install numpy pytest matplotlib
 ```
 git clone https://github.com/akhilsadam/coe332.git 
 cd coe332/homework04/
-chmod +rx /code/land.py
+chmod +rx code/land.py
 ```
 ### Run
 - Tester
 ```
-cd code
 pytest
 ```
  - Any tester output without an `AssertionError` is valid.
-
+- Example Run
+```
+code/land.py data/data.json
+```
+- Run (with data `<pathtodatafile.json>`)
+```
+code/land.py <pathtodatafile.json>
+```
 </details>
 
+## Example Output
 
-This can be run via the following terminal commands:
+<details open>
+<summary>output for data.json file</summary>
 
-Linux	: `python3 sites.py; python3 visit.py`
+```
+Summary for 30 meteors:
+ - Average meteor mass = 83857.3g.
+ - Hemisphere Distribution:
+        Northern & Eastern: 21 meteors.
+        Northern & Western: 6 meteors.
+        Southern & Eastern: 0 meteors.
+        Southern & Western: 3 meteors.
+ - Type Distribution:
+        L5:             1 meteors.
+        H6:             1 meteors.
+        EH4:            2 meteors.
+        Acapulcoite:    1 meteors.
+        L6:             6 meteors.
+        LL3-6:          1 meteors.
+        H5:             3 meteors.
+        L:              2 meteors.
+        Diogenite-pm:   1 meteors.
+        Stone-uncl:     1 meteors.
+        H4:             2 meteors.
+        H:              1 meteors.
+        Iron-IVA:       1 meteors.
+        CR2-an:         1 meteors.
+        LL5:            2 meteors.
+        CI1:            1 meteors.
+        L/LL4:          1 meteors.
+        Eucrite-mmict:  1 meteors.
+        CV3:            1 meteors.
+```
 
-Windows	: `python sites.py; python visit.py`
+</details>
 

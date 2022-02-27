@@ -58,8 +58,10 @@ This is a Docker containerization test program, where we containerize the follow
 ### Run 
 - Test
   - `docker run -it --rm akhilsadam/ml_data_analysis:hw04 pytest code`
-- (with data `<pathtodatafile.json>`) (use a path to the file `data/data.json` to see example output)
-  - `docker run --rm -v \${PWD}:/data ${NAME}/ml_data_analysis:hw04 land.py <pathtodatafile.json>`
+- Run 
+  - Replace `<pathtodatafile.json>` with a path to your datafile.
+  - Use a path to the file `data/data.json` to see example output.
+  - `docker run --rm -v ${PWD}:/data akhilsadam/ml_data_analysis:hw04 land.py data/<pathtodatafile.json>`
 
 </details>
 
@@ -85,7 +87,9 @@ chmod +rx code/land.py
 ```
 pytest
 ```
-- Run (with data `<pathtodatafile.json>`) (use `data/data.json` to see example output)
+- Run   
+  - Replace `<pathtodatafile.json>` with a path to your datafile.
+  - Use a path to the file `data/data.json` to see example output.
 ```
 code/land.py <pathtodatafile.json>
 ```
@@ -128,3 +132,16 @@ Summary for 30 meteors:
 
 </details>
 
+## Additional Data
+
+<details open>
+<summary>more data, if you are interested</summary>
+
+- If you are interested, more data is available <a href=https://raw.githubusercontent.com/wjallen/coe332-sample-data/main/ML_Data_Sample.json>at this link</a>
+- To run this data with the Docker container, simply follow the below steps.
+```
+wget https://raw.githubusercontent.com/wjallen/coe332-sample-data/main/ML_Data_Sample.json
+docker run --rm -v ${PWD}:/data akhilsadam/ml_data_analysis:hw04 land.py data/ML_Data_Sample.json
+```
+
+</details>

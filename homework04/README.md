@@ -56,6 +56,8 @@ This is a Docker containerization test program, where we containerize the follow
 - Install Docker:
   - `apt-get install docker` (if you are on an Ubuntu machine)
 ### Run 
+- Test
+  - `docker run -it --rm akhilsadam/ml_data_analysis:hw04 pytest code`
 - (with data `<pathtodatafile.json>`) (use a path to the file `data/data.json` to see example output)
   - `docker run --rm -v \${PWD}:/data ${NAME}/ml_data_analysis:hw04 land.py <pathtodatafile.json>`
 

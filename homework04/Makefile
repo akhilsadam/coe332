@@ -14,6 +14,7 @@ clean:
 
 build:
 	docker build -t ${NAME}/ml_data_analysis:hw04 .
+	sudo docker run -it --rm ${NAME}/ml_data_analysis:hw04 pytest code
 
 run:
 	docker run --rm -v \${PWD}:/data ${NAME}/ml_data_analysis:hw04 land.py /data/data.json

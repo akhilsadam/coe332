@@ -54,7 +54,8 @@ This is a Docker containerization test program, where we containerize the follow
 <summary>Details</summary>
 
 #### Install
-- Note `docker run` will also pull the necessary image.
+- Note `docker run` will also pull the necessary image, but if you need to pull the image:
+  - `docker pull akhilsadam/ml_data_analysis:hw04`
 - Install Docker:
   - `apt-get install docker` (if you are on an Ubuntu machine)
 #### Run 

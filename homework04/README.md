@@ -48,14 +48,16 @@ This is a Docker containerization test program, where we containerize the follow
 
 ## Installation & Usage
 
+### Docker Container
+
 <details>
 <summary>Docker Container</summary>
 
-### Install
+#### Install
 - Note `docker run` will also pull the necessary image.
 - Install Docker:
   - `apt-get install docker` (if you are on an Ubuntu machine)
-### Run 
+#### Run 
 - Test
   - `docker run -it --rm akhilsadam/ml_data_analysis:hw04 pytest code`
 - Run 
@@ -64,11 +66,13 @@ This is a Docker containerization test program, where we containerize the follow
 
 </details>
 
+### From Source
+
 <details>
 <summary>From Source</summary>
 
 - Please note that source builds only support Python3 on Ubuntu 20.04, and are written in that fashion. Your mileage may vary for other systems.
-### Install
+#### Install
 - First, install all dependencies:
 ```
 apt-get install zlib1g python3 python3-pip -y
@@ -80,7 +84,7 @@ git clone https://github.com/akhilsadam/coe332.git
 cd coe332/homework04/
 chmod +rx code/land.py
 ```
-### Run
+#### Run
 - Tester
   - Any tester output without an `AssertionError` is valid.
 ```
@@ -91,7 +95,7 @@ pytest
 ```
 code/land.py <pathtodatafile.json>
 ```
-### Build
+#### Build
 - If you would like to build a docker container from these files, simply run the following in the repository root directory.
 `make build`
 - Otherwise, simply run the following, and if the tests pass, the build has suceeded.

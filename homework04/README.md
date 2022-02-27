@@ -91,6 +91,16 @@ pytest
 ```
 code/land.py <pathtodatafile.json>
 ```
+### Build
+- If you would like to build a docker container from these files, simply run the following in the repository root directory.
+`make build`
+- Otherwise, simply run the following, and if the tests pass, the build has suceeded.
+```
+docker build -t ${NAME}/ml_data_analysis:hw04 .
+docker run -it --rm ${NAME}/ml_data_analysis:hw04 pytest code
+```
+
+
 </details>
 
 ## Example Output
@@ -143,3 +153,6 @@ docker run --rm -v ${PWD}:/data akhilsadam/ml_data_analysis:hw04 land.py data/ML
 ```
 
 </details>
+
+# Notes
+- Some of the commands may require a `sudo` superuser elevation prefix; again, your mileage may vary.

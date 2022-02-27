@@ -51,6 +51,7 @@ This is a Docker containerization test program, where we containerize the follow
 ### Docker Container
 
 <details>
+<summary>Details</summary>
 
 #### Install
 - Note `docker run` will also pull the necessary image.
@@ -68,6 +69,7 @@ This is a Docker containerization test program, where we containerize the follow
 ### From Source
 
 <details>
+<summary>Details</summary>
 
 - Please note that source builds only support Python3 on Ubuntu 20.04, and are written in that fashion. Your mileage may vary for other systems.
 #### Install

@@ -59,8 +59,7 @@ This is a Docker containerization test program, where we containerize the follow
 - Test
   - `docker run -it --rm akhilsadam/ml_data_analysis:hw04 pytest code`
 - Run 
-  - Replace `<pathtodatafile.json>` with a path to your datafile.
-  - Use a path to the file `data/data.json` to see example output.
+  - Replace `<pathtodatafile.json>` with a path to your datafile, or replace `<pathtodatafile.json>` with `data/data.json` to see example output.
   - `docker run --rm -v ${PWD}:/data akhilsadam/ml_data_analysis:hw04 land.py data/<pathtodatafile.json>`
 
 </details>
@@ -88,8 +87,7 @@ chmod +rx code/land.py
 pytest
 ```
 - Run   
-  - Replace `<pathtodatafile.json>` with a path to your datafile.
-  - Use a path to the file `data/data.json` to see example output.
+  - Replace `<pathtodatafile.json>` with a path to your datafile, or replace `<pathtodatafile.json>` with `data/data.json` to see example output.
 ```
 code/land.py <pathtodatafile.json>
 ```

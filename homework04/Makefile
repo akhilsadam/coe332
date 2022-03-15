@@ -17,7 +17,7 @@ build:
 	docker run -it --rm ${NAME}/ml_data_analysis:hw04 pytest code
 
 run:
-	docker run --rm -v \${PWD}:/data ${NAME}/ml_data_analysis:hw04 land.py /data/data.json
+	docker run --rm ${NAME}/ml_data_analysis:hw04 land.py data/data.json
 
 push:
 	docker login docker.io

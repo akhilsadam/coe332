@@ -13,7 +13,7 @@ Midterm project for COE332.</b></br>
 
 #  Implementation
 
-This project uses Python3 (in particular Flask), and Docker for containerization. Specific Python3 package requirements can be found <a href="https://github.com/akhilsadam/positional-iss/blob/master/requirements.txt">here</a>. R and the npm package `@appnest/readme` by Andreas Mehlsen are used for documentation, but are not part of the API and will not be documented.
+This project uses Python3 (in particular Flask), and Docker for containerization. Specific Python3 package requirements can be found <a href="https://github.com/akhilsadam/positional-iss/blob/master/requirements.txt">here</a>.The npm package `@appnest/readme` by Andreas Mehlsen is used for documentation, but is not part of the API and will not be documented.
 
 
 
@@ -25,7 +25,6 @@ A list of important files can be found below.
 ##  Files
 
  - `app/`:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The application folder.
- - `doc/`:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A documentation folder.
  - `Dockerfile`:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A dockerfile for containerization.
  - `Makefile`:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A makefile for ease of compilation.
  - `requirements.txt`:&nbsp;&nbsp;&nbsp;&nbsp;The list of Python3 requirements.
@@ -34,7 +33,6 @@ A list of important files can be found below.
 ### The App/ Directory
 
 - `api/`:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contains API route definitions in Python.
-- `routes.py`:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Collects the API route definitions.
 
 
 
@@ -45,7 +43,51 @@ A list of important files can be found below.
 
 ##  Input Data
 
-- The application queries data from the National Aeronautics and Space Administration (NASA) public website, in particular ISS positional information via the <a href="https://nasa-public-data.s3.amazonaws.com/iss-coords/2022-02-13/ISS_OEM/ISS.OEM_J2K_EPH.xml">Public Distribution file</a> and regional sighting data for the Midwest via the <a href="https://nasa-public-data.s3.amazonaws.com/iss-coords/2022-02-13/ISS_sightings/XMLsightingData_citiesUSA05.xml">XMLsightingData_citiesUSA05</a> file.
+- The application queries data from the following location: <a href="https://raw.githubusercontent.com/wjallen/coe332-sample-data/main/ML_Data_Sample.json">https://raw.githubusercontent.com/wjallen/coe332-sample-data/main/ML_Data_Sample.json</a>, which looks as follows:
+
+```
+{
+  "meteorite_landings": [
+    {
+      "name": "Gerald",
+      "id": "10001",
+      "recclass": "H4",
+      "mass (g)": "5754",
+      "reclat": "-75.6691",
+      "reclong": "60.6936",
+      "GeoLocation": "(-75.6691, 60.6936)"
+    },
+    {
+      "name": "Dominique",
+      "id": "10002",
+      "recclass": "L6",
+      "mass (g)": "1701",
+      "reclat": "-9.4378",
+      "reclong": "49.5751",
+      "GeoLocation": "(-9.4378, 49.5751)"
+    },
+    {
+      "name": "Malinda",
+      "id": "10003",
+      "recclass": "CI1",
+      "mass (g)": "3482",
+      "reclat": "35.3692",
+      "reclong": "61.4206",
+      "GeoLocation": "(35.3692, 61.4206)"
+    },
+    {
+      "name": "Mary",
+      "id": "10004",
+      "recclass": "L5",
+      "mass (g)": "5339",
+      "reclat": "71.2364",
+      "reclong": "-21.9294",
+      "GeoLocation": "(71.2364, -21.9294)"
+    },
+    ...
+  ]
+}
+```
 
 
 {{ load:doc/inputG.md }}
@@ -73,18 +115,13 @@ To install the Docker container, first install Docker.
   
 Next install the containers.  
 
-  - `docker pull akhilsadam/positional-iss:0.0.2`  
+  - `docker pull akhilsadam/flask-redis:0.0.2`  
 
 #### Run  
 
-To test the code, please run the following in a terminal.  
-
-  - `docker run -it --rm akhilsadam/positional-iss:0.0.2 testall.py`  
-
-
 To run the code, please run the following in a terminal. The terminal should return a link, which can be viewed via a browser or with the `curl` commands documented in the API reference section.  
 
-  - `docker run --name "positional-iss" -p 5026:5026 akhilsadam/positional-iss:0.0.2 wsgi.py`  
+  - `docker run --name "flask-redis" -p 5026:5026 akhilsadam/flask-redis:0.0.2 core.py & (docker run -d -p 6426:6379 -v $(PWD)/data:/data:rw --name=data-redis redis:6 --save 1 1)` 
 
 
 Now we will move to the source installation.  
@@ -102,9 +139,9 @@ Again, first install Docker.
   
 Next, clone the repository and change directory into the repository.  
 
-  - `git clone git@github.com:akhilsadam/positional-iss.git`  
+  - `git clone git@github.com:akhilsadam/coe332.git`  
 
-  - `cd positional-iss`  
+  - `cd coe332/homework05`  
 
 
 Now build the image.  
@@ -113,20 +150,13 @@ Now build the image.
 
 #### Run  
 
-To test the code, please run one of the following.  
-
-  - `make test`  
-
-  - `pytest`  
-
-
 To run the code, please run the following. The terminal should return a link, which can be viewed via a browser or with the `curl` commands documented in the API reference section.  
 
   - `make run`  
 
-To run a rebuild of the code, run this command instead. This command will automatically kill, rebuild, and test the code before running.  
+If the image is not built, it is more appropriate to run the following, to avoid any errors.
 
-  - `make iterate`  
+  - `make rapid`  
 
 
 
@@ -143,11 +173,38 @@ As mentioned above, a browser or the `curl` utility is necessary to view output.
 <details>
 <summary> Complete API Reference </summary>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
-<title>404 Not Found</title>
-<h1>Not Found</h1>
-<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
 
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#rest-api)
+
+##  REST API:
+
+### ENDPOINT (POST) : `/data`
+ - Description: Update Redis database with Meteorite Landings data.
+ - Parameters: 
+   -  N/A
+ - Responses: 
+   -  A `201` response will : Update the database and return a success message.
+
+ - Example: `curl -X POST http://0.0.0.0:5026/ -H "accept: application/json"`
+ - Example Output:
+```
+Successful Load!
+```
+
+ ### ENDPOINT (GET): `/data`
+ - Description: Get Meteorite Landings (ML) data from Redis database.
+ - Parameters: 
+   -  (optional) Start query parameter to index the ML list.
+ - Responses: 
+   -  A `200` response will : Return the indexed list as JSON.
+
+ - Example: `curl -X GET http://0.0.0.0:5026/ -H "accept: application/json"`
+ - Example Output:
+```
+[{"GeoLocation":"(74.4431, -65.2342)","id":"10010","mass (g)":"3644","name":"Helga","recclass":"L5","reclat":"74.4431","reclong":"-65.2342"},{"GeoLocation":"(-46.4123, 58.0161)","id":"10099","mass (g)":"7317","name":"John","recclass":"H6","reclat":"-46.4123","reclong":"58.0161"},{"GeoLocation":"(-12.9202, 33.6740)","id":"10171","mass (g)":"7419","name":"Marisol","recclass":"CV3","reclat":"-12.9202","reclong":"33.6740"},{"GeoLocation":"(84.8000, 14.6012)","id":"10222",
+......
+]
+```
 
 </details>
 
@@ -168,6 +225,8 @@ As mentioned above, a browser or the `curl` utility is necessary to view output.
 			* [Build  ](#build--)
 			* [Run  ](#run---1)
 	* [ Usage  ](#-usage--)
+	* [ REST API:](#-rest-api)
+		* [ENDPOINT (POST) : `/data`](#endpoint-post--data)
 	* [ Contributors](#-contributors)
 	* [ License](#-license) -->
 

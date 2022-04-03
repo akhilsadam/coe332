@@ -1,6 +1,6 @@
 NAME=akhilsadam
 PACKAGE=flask-redis
-TAG=0.0.1
+TAG=0.0.2
 PYTEST=testall.py
 APIFILE=doc/api.md
 SEARCH=\\n

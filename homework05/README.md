@@ -1,7 +1,6 @@
 <!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️--><h1 align="center">flask-redis</h1>
 <p align="center">
-  <b>An containerized Flask webserver designed for querying ISS sightings and positions on February 13, 2022.
-Midterm project for COE332.</b></br>
+  <b>An containerized Flask webserver to read and update a Redis container. HW05 for COE332.</b></br>
   <sub><sub>
 </p>
 
@@ -90,7 +89,6 @@ A list of important files can be found below.
 ```
 
 
-{{ load:doc/inputG.md }}
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#installation--usage)

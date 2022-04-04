@@ -117,9 +117,9 @@ Next install the containers.
 
 #### Run  
 
-To run the code, please run the following in a terminal. The terminal should return a link, which can be viewed via a browser or with the `curl` commands documented in the API reference section.  
+To run the code, please use the `run.sh` script from this repository, with the following terminal command. The terminal should return a link, which can be viewed via a browser or with the `curl` commands documented in the API reference section. (Note this is necessary due to the redis IP address issues.)  
 
-  - `docker run --name "flask-redis" -p 5026:5026 akhilsadam/flask-redis:0.0.2 core.py & (docker run -d -p 6426:6379 -v $(PWD)/data:/data:rw --name=data-redis redis:6 --save 1 1)` 
+  - `sh run.sh akhilsadam flask-redis 0.0.2`
 
 
 Now we will move to the source installation.  

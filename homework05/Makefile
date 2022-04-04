@@ -27,7 +27,7 @@ build:
 	docker build -t ${NAME}/${PACKAGE}:${TAG} .
 
 run:
-	(docker run --name "${PACKAGE}" -p 5026:5026 ${NAME}/${PACKAGE}:${TAG}  core.py) & (docker run -d -p 6426:6379 -v $(PWD)/data:/data:rw --name=data-redis redis:6 --save 1 1)
+	sh run.sh ${NAME} ${PACKAGE} ${TAG}
 
 push:
 	docker login docker.io

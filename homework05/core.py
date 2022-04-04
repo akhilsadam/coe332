@@ -1,7 +1,11 @@
 """Initialize Flask app."""
 from flask import Flask
 from flask_assets import Environment, Bundle
+import sys
+import app.options
 
+ipa = sys.argv[1]
+app.options.options.sethost(ipa)
 
 def init_app():
     """Construct core Flask application with possible Dash app."""

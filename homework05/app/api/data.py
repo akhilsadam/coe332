@@ -11,7 +11,7 @@ from webargs import fields
 import logging
 logger = logging.getLogger('root')
 
-from app.options import redport, redhost
+from app.options import options
 
 import redis
 
@@ -21,7 +21,8 @@ def redis_client():
     Returns:
         object: redis server object.
     """
-    return redis.Redis(host=redhost, port=redport, db=0, charset="utf-8", decode_responses=True)
+    print(f"REDIS host IP: {options.redhost}")
+    return redis.Redis(host=options.redhost, port=options.redport, db=0, charset="utf-8", decode_responses=True)
 
 mainkey='meteorite_landings'
 

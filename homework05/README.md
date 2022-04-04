@@ -183,7 +183,7 @@ As mentioned above, a browser or the `curl` utility is necessary to view output.
  - Responses: 
    -  A `201` response will : Update the database and return a success message.
 
- - Example: `curl -X POST http://0.0.0.0:5026/ -H "accept: application/json"`
+ - Example: `curl -X POST http://0.0.0.0:5026/data -H "accept: application/json"`
  - Example Output:
 ```
 Successful Load!
@@ -196,7 +196,7 @@ Successful Load!
  - Responses: 
    -  A `200` response will : Return the indexed list as JSON.
 
- - Example: `curl -X GET http://0.0.0.0:5026/ -H "accept: application/json"`
+ - Example: `curl -X GET http://0.0.0.0:5026/data -H "accept: application/json"`
  - Example Output:
 ```
 [{"GeoLocation":"(74.4431, -65.2342)","id":"10010","mass (g)":"3644","name":"Helga","recclass":"L5","reclat":"74.4431","reclong":"-65.2342"},{"GeoLocation":"(-46.4123, 58.0161)","id":"10099","mass (g)":"7317","name":"John","recclass":"H6","reclat":"-46.4123","reclong":"58.0161"},{"GeoLocation":"(-12.9202, 33.6740)","id":"10171","mass (g)":"7419","name":"Marisol","recclass":"CV3","reclat":"-12.9202","reclong":"33.6740"},{"GeoLocation":"(84.8000, 14.6012)","id":"10222",

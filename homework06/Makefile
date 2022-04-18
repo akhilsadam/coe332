@@ -7,7 +7,7 @@ deploy:
 	kubectl apply -f deployment.yml
 
 clean:
-	kubectl delete deployment flask-cube-redis
-	kubectl delete pvc data-redis-volume-as-tacc-test
-	kubectl delete services flask-cube-redis-flask-service
-	kubectl delete services flask-cube-redis-redis-service
+	- kubectl delete deployment flask-cube-redis
+	- kubectl delete pvc data-redis-volume-as-tacc-test
+	- kubectl delete services flask-cube-redis-flask-service
+	- kubectl delete services flask-cube-redis-redis-service

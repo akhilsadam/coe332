@@ -27,23 +27,20 @@ spec:
           ports:
           - name: http
             containerPort: 5000
-          metadata:
-            labels:
-              app: flask-cube-redis-flask
-              env: test
-              username: astacc
+          labels:
+            app: flask-cube-redis-flask
+            env: test
+            username: astacc
         - name: data-redis
           imagePullPolicy: Always
           image: redis:6
-          replicas: 1
           ports:
           - name: http
             containerPort: 6379
-          metadata:
-            labels:
-              app: flask-cube-redis-redis
-              env: test
-              username: astacc
+          labels:
+            app: flask-cube-redis-redis
+            env: test
+            username: astacc
           volumeMounts:
             - name: data-redis-volume-as-tacc-test
               mountPath: "/data"

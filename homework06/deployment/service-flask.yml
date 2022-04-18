@@ -16,5 +16,5 @@ spec:
     username: astacc
   ports:
   - name: flask-cube-redis
-    port: 5026
+    port: 5000
     targetPort: 5000

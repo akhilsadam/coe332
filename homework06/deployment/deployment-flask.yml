@@ -23,7 +23,7 @@ spec:
         - name: flask-redis
           imagePullPolicy: Always
           image: akhilsadam/flask-redis:0.0.2
-          command: ['python3', 'core.py', ip_address]
+          command: ['python3', 'core.py', ip_addreess]
           ports:
           - name: http
             containerPort: 5026

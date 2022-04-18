@@ -107,15 +107,15 @@ To see that the deployments, services, and pods are up & running, do the followi
 `kubectl get deployments`
 `kubectl get services`
 
-We can also inspect the deployments to make sure the correct number of pods exist (2 for Flask, 1 for Redis):
-`kubectl describe deployment flask-cube-redis-flask` (will have two addresses under endpoints)
-`kubectl describe deployment flask-cube-redis-redis` (will have one address under endpoints)
+We can also inspect the services to make sure the correct number of pods exist (2 for Flask, 1 for Redis):
+`kubectl describe service flask-cube-redis-flask-service` (will have two addresses under endpoints)
+`kubectl describe service flask-cube-redis-redis-service` (will have one address under endpoints)
 
 Now to test that the system is working, start by deploying the debug deployment:
 `kubectl apply -f deployment/deployment-debug.yml`
-Find the IP address of the Flask service with the `kubectl get services` command.
-Now `exec` into the debug deployment terminal with the following command:
-`kubectl exec -it deployment py-debug-deployment -- /bin/bash`
+Find the IP address of the Flask service, and the complete debug pod name with the `kubectl get services` command and the `kubectl get pods` command.
+Now `exec` into the debug deployment terminal with the following command, replacing `<py-debug-deployment>` with the complete pod name:
+`kubectl exec -it <py-debug-deployment> -- /bin/bash`
 We can now query the data routes listed in the API reference below by running the given curl commands (of course, replacing the `<url>` with the IP address of the Flask service).
 
 
@@ -140,7 +140,7 @@ Regeneration of pods can also be tested in a similar manner.
  - Responses: 
    -  A `201` response will : Update the database and return a success message.
 
- - Example: `curl -X POST <url>/data -H "accept: application/json"`
+ - Example: `curl -X POST <url>:5000/data -H "accept: application/json"`
  - Example Output:
 ```
 Successful Load!
@@ -153,7 +153,7 @@ Successful Load!
  - Responses: 
    -  A `200` response will : Return the indexed list as JSON.
 
- - Example: `curl -X GET <url>/data -H "accept: application/json"`
+ - Example: `curl -X GET <url>:5000/data -H "accept: application/json"`
  - Example Output:
 ```
 [{"GeoLocation":"(74.4431, -65.2342)","id":"10010","mass (g)":"3644","name":"Helga","recclass":"L5","reclat":"74.4431","reclong":"-65.2342"},{"GeoLocation":"(-46.4123, 58.0161)","id":"10099","mass (g)":"7317","name":"John","recclass":"H6","reclat":"-46.4123","reclong":"58.0161"},{"GeoLocation":"(-12.9202, 33.6740)","id":"10171","mass (g)":"7419","name":"Marisol","recclass":"CV3","reclat":"-12.9202","reclong":"33.6740"},{"GeoLocation":"(84.8000, 14.6012)","id":"10222",

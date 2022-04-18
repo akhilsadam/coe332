@@ -14,6 +14,6 @@ spec:
     env: test
     username: astacc
   ports:
-  - name: flask-cube-redis
+  - name: http
     port: 5000
     targetPort: 5000

@@ -20,7 +20,7 @@ spec:
         username: astacc
     spec:
       containers:
-        - name: flask-cube-redis
+        - name: flask-redis
           imagePullPolicy: Always
           image: akhilsadam/flask-redis
           command: ['python3', 'core.py', ip_address]

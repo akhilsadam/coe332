@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-cube-redis
+  labels:
+    app: flask-cube-redis
+    env: test
+    username: astacc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-cube-redis
+  template:
+    metadata:
+      labels:
+        app: flask-cube-redis
+        env: test
+        username: astacc
+    spec:
+      containers:
+        - name: flask-cube-redis
+          imagePullPolicy: Always
+          image: akhilsadam/flask-redis
+          command: ['python3', 'core.py', 'ip_address']
+          ports:
+          - name: http
+            containerPort: 5000
+          metadata:
+            labels:
+              app: flask-cube-redis-flask
+              env: test
+              username: astacc
+        - name: data-redis
+          imagePullPolicy: Always
+          image: redis:6
+          replicas: 1
+          ports:
+          - name: http
+            containerPort: 6379
+          metadata:
+            labels:
+              app: flask-cube-redis-redis
+              env: test
+              username: astacc
+          volumeMounts:
+            - name: data-redis-volume-as-tacc-test
+              mountPath: "/data"
+      volumes:
+        - name: data-redis-volume-as-tacc-test
+          persistentVolumeClaim:
+            claimName: data-redis-volume-as-tacc-test

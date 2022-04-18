@@ -10,7 +10,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: flask-cube-redis-flask
+    app: flask-cube-redis
     env: test
     username: astacc
   ports:

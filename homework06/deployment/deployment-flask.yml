@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-cube-redis
+  labels:
+    app: flask-cube-redis
+    env: test
+    username: astacc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-cube-redis
+  template:
+    metadata:
+      labels:
+        app: flask-cube-redis-flask
+        env: test
+        username: astacc
+    spec:
+      containers:
+        - name: flask-redis
+          imagePullPolicy: Always
+          image: akhilsadam/flask-redis:0.0.2
+          command: ['python3', 'core.py', ip_address]
+          ports:
+          - name: http
+            containerPort: 5000

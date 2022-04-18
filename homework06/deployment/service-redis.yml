@@ -10,7 +10,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: flask-cube-redis
+    app: flask-cube-redis-redis
     name: data-redis
     env: test
     username: astacc

@@ -11,3 +11,5 @@ clean:
 	- kubectl delete pvc data-redis-volume-as-tacc-test
 	- kubectl delete services flask-cube-redis-flask-service
 	- kubectl delete services flask-cube-redis-redis-service
+
+iterate: clean deploy

@@ -6,18 +6,31 @@
 
 <br />
 
-
-
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#implementation)
 
 #  Implementation
 
 We use the `homework05` docker image as is, so the necessary items for that are included in the `./homework05` folder.
+This repo is only designed to be run on the TACC COE-332 Kubernetes system, and any deviations from the following procedure may not behave as expected.
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#files)
 
 ##  Files
+
+- `/deployment/` - contains all the kubernetes deployment files:
+
+ - `data-redis-volume.yml` - makes the persistent volume
+ - `deployment-debug.yml` - for debugging the deployments
+ - `deployment-flask.yml` - deployment for flask container
+ - `deployment-redis.yml` - deployment for redis container
+ - `service-flask.yml` - service for flask container
+ - `service-redis.yml` - service for redis container
+
+- `/homework05/` - contains everything necessary for the `flask-redis` docker image. Note this is completely identical to the `homework05` submission --- nothing has changed.
+
+- `Makefile` - a makefile for ease of use
+- `repl.sh` - a sh script to automatically query the Redis service IP and input to the Flask deployment.
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#input-data)
 
@@ -69,83 +82,48 @@ We use the `homework05` docker image as is, so the necessary items for that are 
 }
 ```
 
+This data is stored in the Redis deployment and updated / read via the Flask deployment.
+
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#installation--usage)
 
 #  Installation & Usage
 
-A user can build this project from source, or use the provided Docker container on DockerHub.  
-A Docker installation is required for source builds, as we build and run a Docker image.
+There is really only one way to run this project. Please replace `as_tacc` with your username in all following sshes.
+
+First, log in to ISP02, and then the Kubernetes Cloud:
+`ssh as_tacc@isp02.tacc.utexas.edu`
+`ssh as_tacc@coe332-k8s.tacc.cloud`
+
+Next, clone this GitHub repository and `cd` into this folder:
+`git clone <the cloning url for this repository>`
+`cd coe332/homework06/`
+
+Now we can deploy the Flask and Redis deployments. The Makefile will do this for us:
+`make iterate`
+
+To see that the deployments, services, and pods are up & running, do the following:
+`kubectl get pods`
+`kubectl get deployments`
+`kubectl get services`
+
+We can also inspect the deployments to make sure the correct number of pods exist (2 for Flask, 1 for Redis):
+`kubectl describe deployment flask-cube-redis-flask` (will have two addresses under endpoints)
+`kubectl describe deployment flask-cube-redis-redis` (will have one address under endpoints)
+
+Now to test that the system is working, start by deploying the debug deployment:
+`kubectl apply -f deployment/deployment-debug.yml`
+Find the IP address of the Flask service with the `kubectl get services` command.
+Now `exec` into the debug deployment terminal with the following command:
+`kubectl exec -it deployment py-debug-deployment -- /bin/bash`
+We can now query the data routes listed in the API reference below by running the given curl commands (of course, replacing the `<url>` with the IP address of the Flask service).
 
 
+The Redis server is also tested in this manner, so there is no need to specifically interact with the Redis server. We will not be providing commands for that here.
 
+To test persistence, simply delete the Redis pod via `kubectl delete pod <podname>`, where `<podname>` is the name of the `flask-cube-redis-redis` pod that can be found with the `kubectl get pods` command.
 
-The following commands are all terminal commands, and are expected to run on a Ubuntu 20.04 machine with Python3, and are written in that fashion. Mileage may vary for other systems. We will describe the Docker installation first.   
-
-### From Docker:
-
-#### Install
-
-To install the Docker container, first install Docker.  
-
-  - `apt-get install docker` (if using an Ubuntu machine, else get Docker from <a href="https://www.docker.com/">docker.com</a>.)  
-  
-Next install the containers.  
-
-  - `docker pull akhilsadam/flask-redis:0.0.2`  
-
-#### Run  
-
-To run the code, please use the `run.sh` script from this repository, with the following terminal command. The terminal should return a link, which can be viewed via a browser or with the `curl` commands documented in the API reference section. (Note this is necessary due to the redis IP address issues.)  
-
-  - `sh run.sh akhilsadam flask-redis 0.0.2`
-
-
-Now we will move to the source installation.  
-
-### From Source:  
-
-Since this is a Docker build, the requirements need not be installed on the server, as it will automatically be done on the Docker image.  
-All commands, unless otherwise noted, are to be run in a terminal (in the home directory of the cloned repository).  
-
-#### Build  
-
-Again, first install Docker.  
-
-  - `apt-get install docker` (if using an Ubuntu machine, else get Docker from <a href="https://www.docker.com/">docker.com</a>.)  
-  
-Next, clone the repository and change directory into the repository.  
-
-  - `git clone git@github.com:akhilsadam/coe332.git`  
-
-  - `cd coe332/homework05`  
-
-
-Now build the image.  
-
-  - `make build`  
-
-#### Run  
-
-To run the code, please run the following. The terminal should return a link, which can be viewed via a browser or with the `curl` commands documented in the API reference section.  
-
-  - `make run`  
-
-If the image is not built, it is more appropriate to run the following, to avoid any errors.
-
-  - `make rapid`  
-
-
-
-
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#usage--)
-
-##  Usage  
-
-
-
-As mentioned above, a browser or the `curl` utility is necessary to view output. All endpoints as mentioned in the REST API section are valid urls, and navigating to those links will return expected output as included in this document.
-
+Regeneration of pods can also be tested in a similar manner.
 
 <details>
 <summary> Complete API Reference </summary>
@@ -162,7 +140,7 @@ As mentioned above, a browser or the `curl` utility is necessary to view output.
  - Responses: 
    -  A `201` response will : Update the database and return a success message.
 
- - Example: `curl -X POST http://0.0.0.0:5026/data -H "accept: application/json"`
+ - Example: `curl -X POST <url>/data -H "accept: application/json"`
  - Example Output:
 ```
 Successful Load!
@@ -175,7 +153,7 @@ Successful Load!
  - Responses: 
    -  A `200` response will : Return the indexed list as JSON.
 
- - Example: `curl -X GET http://0.0.0.0:5026/data -H "accept: application/json"`
+ - Example: `curl -X GET <url>/data -H "accept: application/json"`
  - Example Output:
 ```
 [{"GeoLocation":"(74.4431, -65.2342)","id":"10010","mass (g)":"3644","name":"Helga","recclass":"L5","reclat":"74.4431","reclong":"-65.2342"},{"GeoLocation":"(-46.4123, 58.0161)","id":"10099","mass (g)":"7317","name":"John","recclass":"H6","reclat":"-46.4123","reclong":"58.0161"},{"GeoLocation":"(-12.9202, 33.6740)","id":"10171","mass (g)":"7419","name":"Marisol","recclass":"CV3","reclat":"-12.9202","reclong":"33.6740"},{"GeoLocation":"(84.8000, 14.6012)","id":"10222",

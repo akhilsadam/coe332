@@ -1,6 +1,6 @@
-<!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️--><h1 align="center">flask-cube-redis</h1>
+<!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️--><h1 align="center">flask-redis</h1>
 <p align="center">
-  <b>An containerized Flask webserver to read and update a Redis container, through Kubernetes. HW06 for COE332.</b></br>
+  <b>An containerized Flask webserver to read and update a Redis container. HW05 for COE332.</b></br>
   <sub><sub>
 </p>
 
@@ -12,12 +12,31 @@
 
 #  Implementation
 
-We use the `homework05` docker image as is, so the necessary items for that are included in the `./homework05` folder.
+This project uses Python3 (in particular Flask), and Docker for containerization. Specific Python3 package requirements can be found <a href="https://github.com/akhilsadam/positional-iss/blob/master/requirements.txt">here</a>.The npm package `@appnest/readme` by Andreas Mehlsen is used for documentation, but is not part of the API and will not be documented.
+
+
+
+A list of important files can be found below.
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#files)
 
 ##  Files
+
+ - `app/`:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The application folder.
+ - `Dockerfile`:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A dockerfile for containerization.
+ - `Makefile`:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A makefile for ease of compilation.
+ - `requirements.txt`:&nbsp;&nbsp;&nbsp;&nbsp;The list of Python3 requirements.
+ - `core.py`:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The main Python file.
+
+### The App/ Directory
+
+- `api/`:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contains API route definitions in Python.
+
+
+
+
+
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#input-data)
 
@@ -68,6 +87,8 @@ We use the `homework05` docker image as is, so the necessary items for that are 
   ]
 }
 ```
+
+
 
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#installation--usage)
@@ -185,6 +206,27 @@ Successful Load!
 
 </details>
 
+<!-- 
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#table-of-contents)
+
+##  Table of Contents
+
+* [ Implementation](#-implementation)
+	* [ Files](#-files)
+		* [The App/ Directory](#the-app-directory)
+	* [ Input Data](#-input-data)
+* [ Installation & Usage](#-installation--usage)
+		* [From Docker:](#from-docker)
+			* [Install](#install)
+			* [Run  ](#run--)
+		* [From Source:  ](#from-source--)
+			* [Build  ](#build--)
+			* [Run  ](#run---1)
+	* [ Usage  ](#-usage--)
+	* [ REST API:](#-rest-api)
+		* [ENDPOINT (POST) : `/data`](#endpoint-post--data)
+	* [ Contributors](#-contributors)
+	* [ License](#-license) -->
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#contributors)
 

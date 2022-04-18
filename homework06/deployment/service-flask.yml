@@ -2,9 +2,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: flask-cube-redis-service
+  name: flask-cube-redis-flask-service
   labels:
-    app: flask-cube-redis-service
+    app: flask-cube-redis-flask-service
     env: test
     username: astacc
 spec:

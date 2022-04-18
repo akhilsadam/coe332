@@ -2,16 +2,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask-cube-redis
+  name: flask-cube-redis-flask
   labels:
-    app: flask-cube-redis
+    app: flask-cube-redis-flask
     env: test
     username: astacc
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: flask-cube-redis
+      app: flask-cube-redis-flask
   template:
     metadata:
       labels:

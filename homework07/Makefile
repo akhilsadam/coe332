@@ -12,7 +12,7 @@ image:
 	- mv ${project}/*.dot ./${imgdir}
 
 mermaid:
-	$$(cat src/register.mmd | python -c "import sys; import base64; import zlib; print(base64.urlsafe_b64encode(zlib.compress(sys.stdin.read().encode('utf-8'), 9)).decode('ascii'))" > tmp.key)
+	$$(cat src/register.mmd | python3 -c "import sys; import base64; import zlib; print(base64.urlsafe_b64encode(zlib.compress(sys.stdin.read().encode('utf-8'), 9)).decode('ascii'))" > tmp.key)
 	curl -X GET https://kroki.io/mermaid/png/$$(cat tmp.key) --output img/register.png
 	rm tmp.key
 

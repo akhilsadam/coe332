@@ -12,11 +12,11 @@
 
 This document assumes familiarity with the <a href='https://github.com/akhilsadam/positional-iss'>positional-iss</a> project, so if you have not read the project documentation, please do that first. <b>Notes from that document will <i>not</i> be re-included here.</b>
 
-<div style='background:rgba(77,143,172,0.5);'>
+<embed style='background:rgba(77,143,172,0.5);'>
 
 ! With that said, a basic reminder: Every route in the application can be called by either entering the corresponding URL in a browser or using the command-line utility (cli) `curl`.
 
-</div>
+</embed>
 
 We begin by considering the front-end methods / routes that arise in the application. An auto-generated inheritance diagram, and then an interaction diagram follows. (Note only specific details will be covered here --- those in relation to documentation generation.)
 

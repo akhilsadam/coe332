@@ -38,8 +38,14 @@ Below is a sequence diagram illustrating the process of documentation generation
 
 First, before the user (left-most object) performs any action, the `app.routes` module initalizes the documentation with the help of the `flask-apispec` package. The `app.routes` module, via the `flask-apispec` package, parses the api information from documentation strings in the route code files (here noted as `API data routes`), and saves it to a file called `app/api/api.json`, which can be navigated to and downloaded.  
 
-Now consider the user. When the user uses the `curl` utility or a browser to navigate to `/api/save`, a HTTP `GET` request is sent to the `app.api.register` module, which requests the pre-generated `api.json` file (also a HTTP request), and converts that to a Markdown file.
+Now consider the user. When the user uses the `curl` utility or a browser to navigate to `/api/save`, a HTTP `GET` request is sent to the `app.api.register` module, which requests the pre-generated `api.json` file (also a HTTP request), and converts that to Python objects. Particularly, the module parses out the example input commands and creates a `curl` command to test the route.
 
+Then it calles the appropriate route and collects the example output. (In this diagram all API data routes are clustered together as `API data routes` for simplicity.) 
+With the example data, the API specification is now complete. The `app.api.register` module now formats everything into a simple Markdown file, which is then returned to the user as a string.
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)]()
+
+Thank you for reading!
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)](#contributors)
 

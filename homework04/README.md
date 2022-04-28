@@ -1,4 +1,4 @@
-# HW 04 Containerization
+# containerization
 
 This is a Docker containerization test program, where we containerize the following project.
 

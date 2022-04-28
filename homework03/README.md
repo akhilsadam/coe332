@@ -1,4 +1,6 @@
-# HW 03 Water Turbidity Measurements
+# water-quality-turbidity
+
+(Water quality from turbidity measurements)
 
 This is a JSON file I/O test program.
 We assess water quality from example turbidity measurements stored in a JSON file located ![here](https://raw.githubusercontent.com/wjallen/turbidity/main/turbidity_data.json).

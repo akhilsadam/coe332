@@ -18,5 +18,5 @@ mermaid:
 
 push:
 	git add .
-	git commit -m "[auto] update README"
+	- git commit -m "[auto] update README"
 	git push

@@ -14,11 +14,9 @@ sequenceDiagram
         user->>app.api.register: GET /api/save
         app.api.register->>app/api/api.json: Get data from api.json
         app/api/api.json->>app.api.register: -
-
         Note right of app.api.register: Parse JSON <br> to Python objcts
         app.api.register->>API data routes: Test routes with example input<br> to get example output
         API data routes->>app.api.register: -
         Note right of app.api.register: and format<br> into Markdown output
-
         app.api.register->>user: Return rendered API <br>(the Markdown) as string
     end

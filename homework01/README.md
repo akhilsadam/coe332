@@ -8,5 +8,7 @@
 ## Run:
 
 Simply run the following commands in a python3-equipped Linux terminal.
+
 `pip3 install numpy` (version > 1.17 preferred, but optional)
+
 `python3 <program>` (replace `<program>` with either `even_odd.py` or `prime.py`.)

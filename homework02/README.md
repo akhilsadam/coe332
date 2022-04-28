@@ -1,4 +1,4 @@
-# HW 02
+# HW 02 Simulated Metorite Landing Pathfinder
 
 This is a JSON file I/O test program.
 We calculate 5 example meteorite landing sites in Syrtis Major, Mars, and measure the time for a naive path between the sites.
